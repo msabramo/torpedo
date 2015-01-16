@@ -6,13 +6,13 @@ import shlex
 
 def headless(**kw):
 	port = kw.pop('port', 9050)
-	phantom = kw.pop('phantom', '/usr/bin/local/phantomjs')
+	phantom = kw.pop('phantom', '/usr/local/bin/phantomjs')
 
 	service_args = [
 		'--proxy=127.0.0.1:{}'.format(port),
 		'--proxy-type=socks5',
 		]
-	return webdriver.PhantomJS(phantom, service_args=service_args, **kw)
+	return webdriver.PhantomJS(phantom, service_args=service_args)
 
 def session(**kw):
 	port = kw.pop('port', 9050)
