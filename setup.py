@@ -1,10 +1,17 @@
 from setuptools import setup, find_packages
 
+long_description = open(
+    path.join(
+        path.dirname(__file__),
+        'README.rst'
+    )
+).read()
+
 setup(
   name='torpedo',
   version='0.0.2',
-  description="",
-  long_description="",
+  description="A simplified interface for creating session and browser objects on top of Tor",
+  long_description=long_description,
   classifiers=[
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
