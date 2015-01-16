@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-  name='tor_tools',
+  name='torpedo',
   version='0.0.1',
   description="",
   long_description="",
@@ -12,19 +12,17 @@ setup(
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     ],
-  keywords='',
+  keywords='Tor, Scraping, Crawling',
   author='Brian Abelson',
   author_email='brian@enigma.io',
-  url='http://github.com/bibliotech/tor-tools',
+  url='http://github.com/abelsonlive/torpedo',
   license='MIT',
   packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
   namespace_packages=[],
   include_package_data=False,
   zip_safe=False,
   install_requires=[
-    'requests',
-    'pyvirtualdisplay',
-    'stem',
+    'requesocks',
     'selenium'
   ],
   tests_require=[],

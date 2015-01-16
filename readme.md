@@ -1,42 +1,58 @@
-# tor-tools 
-Enigma's darkweb toolkit.
+# torpedo
 
+A simplified interface for creating session and browser objects on top of `Tor`.
+
+## Requirements
+
+On Mac OS X
+
+```bash
+brew install tor phantomjs
+```
+
+On Ubuntu 
+
+```bash
+sudo apt-get instal tor phantomjs
+```
 
 ## Install
 ```
-python setup.py install
+pip install torpedo
+```
+
+## Tests
+```
+git clone https://github.com/abelsonlive/torpedo.git
+cd torpedo && nosetests
 ```
 
 ## Examples:
 
-`TorSession`: use just like `requests.Session`
+- A `requests.Session` object:
+
 ```python
-from tor_tools import (
-  TorSession, get_ip, refresh_ip
-  )
-s = TorSession()
-print get_ip()
-s.get('http://www.google.com/')
-refresh_ip()
-print get_ip()
+import torpedo
+
+s = torpedo.session()
+s.get('http://example.com')
 ```
 
-`TorBrowser`: works just like `selenium.webdriver`, with built-in headless
-browsing via `pyvirtualdisplay`:
-```python
-from tor_tools import TorBrowser
+- A `selenium.webdriver` headless browser powered by `PhantomJS`:
 
-tor = TorBrowser()
-tor.browser.get("http://yahoo.com")
-print tor.browser.current_url
-tor.browser.save_screenshot("screenshot.png")
-tor.browser.close()
-tor.display.stop()
+```python
+import torpedo 
+
+b = torpedo.headless()
+b.get('http://example.com')
 ```
 
-## Notes
+- Utilities for getting and resetting your ip address:
 
-* Hot to configure `tor` to only use one-hop-circuits:
-  - [http://thesprawl.org/research/tor-control-protocol/#creating-really-fast-one-hop-circuits](http://thesprawl.org/research/tor-control-protocol/#creating-really-fast-one-hop-circuits)
+```python
+import torpedo
 
-* 
+print torpedo.get_ip()
+torpedo.refresh_ip()
+print torpedo.get_ip()
+``` 
